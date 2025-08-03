@@ -1,3 +1,4 @@
+# Create a Flask application with an /api route. When this route is accessed, it should return a JSON list. The data should be stored in a backend file, read from it, and sent as a response.
 from flask import Flask, jsonify
 import json
 from pathlib import Path
