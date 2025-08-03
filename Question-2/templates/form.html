@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Submit Data</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        margin: 2rem;
+      }
+      .error {
+        color: #b00020;
+        margin-bottom: 1rem;
+      }
+      form {
+        display: grid;
+        gap: 0.75rem;
+        max-width: 360px;
+      }
+      label {
+        display: grid;
+        gap: 0.25rem;
+      }
+      input,
+      button {
+        padding: 0.5rem;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Submit Data</h1>
+
+    <!-- flash messages -->
+    {% with messages = get_flashed_messages(with_categories=true) %} {% if
+    messages %} {% for category, msg in messages %} {% if category == 'error' %}
+    <div class="error">{{ msg }}</div>
+    {% endif %} {% endfor %} {% endif %} {% endwith %}
+
+    <form method="POST" action="/form" novalidate>
+      <label>
+        Name
+        <input
+          type="text"
+          name="name"
+          value="{{ name|default('') }}"
+          required
+        />
+      </label>
+      <label>
+        Email
+        <input
+          type="email"
+          name="email"
+          value="{{ email|default('') }}"
+          required
+        />
+      </label>
+      <button type="submit">Submit</button>
+    </form>
+  </body>
+</html>
